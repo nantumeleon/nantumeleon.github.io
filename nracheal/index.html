@@ -3,62 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NATS JUICE | Fresh Fruits & Natural Juices</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>NATS JUICE | Pure Farm To Bottle</title>
+    <style>
+        /* ==========================================================================
+           1. VARIABLES, BASE RESET & FONTS
+           ========================================================================== */
+        :root {
+            --primary-color: #2e7d32;     /* Fresh Leaf Green */
+            --secondary-color: #e48114;   /* Brand Orange */
+            --dark-color: #2d241e;        /* Earthy Charcoal */
+            --light-bg: #fdfbf7;          /* Clean Off-white */
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --max-width: 1200px;
+        }
 
-    <!-- Main Navigation Bar Layout -->
-    <header class="main-header">
-        <div class="container header-flex">
-            <div class="logo">
-                <img src="images/logo.png" alt="Nats Juice Logo" class="logo-img">
-                <span class="logo-text">NATS JUICE</span>
-            </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="process.html">Our Process</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="header-cta">
-                <a href="contact.html" class="btn-cta">Order Now</a>
-            </div>
-        </div>
-    </header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    <!-- Interactive Bold Hero Section -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1>Pure nature in every single sip.</h1>
-            <p>Fresh fruit selections and cold-pressed juices hydrating and energizing healthy lifestyles across Uganda.</p>
-            <a href="products.html" class="btn-cta">Explore Our Range</a>
-        </div>
-    </section>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-bg);
+        }
 
-    <!-- Clean Footer Elements -->
-    <footer class="footer-compact">
-        <div class="container footer-flex-compact">
-            <div class="footer-brand-compact">
-                <div class="logo">
-                    <img src="images/logo.png" alt="Nats Juice Logo" class="logo-img">
-                    <span class="logo-text" style="color: #ffffff;">NATS JUICE</span>
-                </div>
-                <p>Fresh fruit selections and cold-pressed juices hydrating and energizing healthy lifestyles across Uganda.</p>
-            </div>
-            <div class="footer-socials-compact">
-                <div class="social-icons-compact">
-                    <a href="https://wa.me/256778732386" target="_blank" class="social-btn-compact whatsapp" aria-label="WhatsApp">
-                        WhatsApp Us
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
 
-</body>
-</html>
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* ==========================================================================
+           2. REUSABLE COMPONENTS (BUTTONS & HEADINGS)
+           ========================================================================== */
+        .btn-cta {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(228, 129, 20, 0.3);
+        }
+
+        .btn-cta:hover {
+            background-color: #c96f0e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(228, 129, 20, 0.4);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3.5rem auto;
+            font-size: 1.1rem;
+            color: #665c54;
+        }
+
+        /* ==========================================================================
+           3. FIXED STICKY HEADER
+           ========================================================================== */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.6rem 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--dark-color);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu ul {
+            display: flex;
+            gap: 2.2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            color: #5d534a;
+            padding: 0.5rem 0;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero-section {
+            position: relative;
+            height: 85vh;
+            min-height: 550px;
+            background: url('home.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            max-width: 700px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        /* ==========================================================================
+           5. ABOUT SECTION (SPLIT SPLASH)
+           ========================================================================== */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .grid-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img-container img {
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 100%;
+            object-fit: cover;
+            height: 400px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==========================================================================
+           6. OUR PROCESS SECTION
+           ========================================================================== */
+        .process-section {
+            background-color: #f4eee7;
+        }
+
+        .process-banner {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+        }
+
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .step-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        /* ==========================================================================
+           7. PRODUCTS SECTION (STYLIZED PLACEHOLDERS)
+           ========================================================================== */
+        .products-section {
+            background-color: var(--white);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--light-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #f0e9e1;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .product-visual {
+            height: 240px;
+            background: linear-gradient(to bottom, #fff5eb, #ffedd5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 1.8rem;
+            text-align: center;
+        }
+
+        .product-info h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .product-info p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        /* ==========================================================================
+           8. CONTACT SECTION
+           ========================================================================== */
+        .contact-section {
+            background: linear-gradient(rgba(244, 238, 231, 0.9), rgba(244, 238, 231, 0.9)), url('contact.jpg') no-repeat center center/cover;
+        }
+
+        .contact-box {
+            background-color: var(--white);
+            max-width:
