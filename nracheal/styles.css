@@ -1,51 +1,82 @@
 /* ==========================================================================
-   1. BRAND IDENTITY DESIGN TOKENS (Mango Orange Palette)
+   1. VARIABLES & RESET
    ========================================================================== */
 :root {
-    --primary-mango: #FF9F1C;       /* Vibrant tropical accent for CTAs & states */
-    --deep-citrus: #E07A00;         /* Deep pulp contrast for typography & headers */
-    --dark-bark: #aa5902;           /* Rich organic shadow tone for deep footers */
-    --sunshine-mist: #FFFBF7;       /* Warm, welcoming background tint */
-    --whatsapp-green: #25D366;      /* Global native green for instant action */
-    --whatsapp-hover: #20BA5A;
-    --text-dark: #333333;           /* Primary reading text */
-    --text-muted: #666666;          /* Secondary descriptive body text */
-    --pure-white: #ffffff;
+    --primary-color: #2e7d32;     /* Fresh Leaf Green */
+    --secondary-color: #ff9800;   /* Bright Orange */
+    --dark-color: #212121;        /* Deep Charcoal */
+    --light-color: #f9f9f9;       /* Soft White/Gray */
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+    --max-width: 1200px;
 }
 
-/* ==========================================================================
-   2. RESET & GLOBAL ELEMENT STYLES
-   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-box: border-box;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-dark);
     line-height: 1.6;
-    background-color: var(--sunshine-mist);
-    -webkit-font-smoothing: antialiased;
+    color: var(--dark-color);
+    background-color: var(--white);
 }
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* ==========================================================================
-   3. NAVIGATION HEADER
+   2. BUTTONS & UTILITIES
+   ========================================================================== */
+.btn-cta {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.btn-cta:hover {
+    background-color: #e68a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+/* ==========================================================================
+   3. HEADER & NAVIGATION
    ========================================================================== */
 .main-header {
-    background-color: var(--pure-white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 15px 0;
+    padding: 0.5rem 0;
 }
 
 .header-flex {
@@ -57,144 +88,109 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.5rem;
 }
 
 .logo-img {
     height: 45px;
     width: auto;
+    object-fit: contain;
 }
 
 .logo-text {
-    font-size: 24px;
+    font-size: 1.3rem;
     font-weight: 800;
-    color: var(--deep-citrus);
+    color: var(--primary-color);
     letter-spacing: 1px;
 }
 
 .nav-menu ul {
     display: flex;
-    list-style: none;
-    gap: 30px;
+    gap: 2rem;
 }
 
 .nav-menu a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 600;
-    font-size: 16px;
-    transition: color 0.3s;
+    font-weight: 500;
+    color: #555;
+    padding: 0.5rem 0;
+    position: relative;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: var(--primary-mango);
+    color: var(--primary-color);
 }
 
-.btn-cta {
-    background-color: var(--primary-mango);
-    color: var(--pure-white);
-    padding: 10px 24px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: background-color 0.3s, transform 0.2s;
-    display: inline-block;
+/* Subtle line underscore animation under active/hover links */
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
 }
 
-.btn-cta:hover {
-    background-color: var(--deep-citrus);
-    transform: translateY(-2px);
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
 }
 
 /* ==========================================================================
-   4. HERO SECTIONS
+   4. HERO SECTION
    ========================================================================== */
 .hero-section {
     position: relative;
-    background-image: url('images/home.jpg'); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    min-height: 550px;
+    height: 75vh;
+    min-height: 500px;
+    /* Generic fall-back color, replace 'juice-hero.jpg' with your actual background image asset */
+    background: url('images/juice-hero.jpg') no-repeat center center/cover;
+    background-color: #e2ecc8; 
     display: flex;
     align-items: center;
-    color: var(--pure-white);
 }
 
-.page-hero {
-    position: relative;
-    min-height: 350px;
-    display: flex;
-    align-items: center;
-    color: var(--pure-white);
-}
-
+/* Dark subtle overlay to keep your hero text completely readable */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
     z-index: 1;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+    color: var(--white);
     max-width: 650px;
 }
 
 .hero-content h1 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
 }
 
 .hero-content p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    opacity: 0.95;
-}
-
-/* --- INNER PAGES HERO SPECIFICS --- */
-.about-hero {
-    background-image: url('images/about.jpg'); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.process-hero {
-    background-image: url('images/process.jpg'); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.products-hero {
-    background-image: url('images/home.jpg'); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.contact-hero {
-    background-image: url('images/contact.jpg'); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
 }
 
 /* ==========================================================================
-   5. COMPACT FOOTER DESIGN
+   5. COMPACT FOOTER
    ========================================================================== */
 .footer-compact {
-    background-color: var(--dark-bark);
-    color: var(--pure-white);
-    padding: 40px 0;
+    background-color: var(--dark-color);
+    color: #b0bec5;
+    padding: 3rem 0;
     margin-top: auto;
 }
 
@@ -202,42 +198,70 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
     flex-wrap: wrap;
-    gap: 30px;
 }
 
 .footer-brand-compact {
-    flex: 1;
-    min-width: 280px;
-    max-width: 500px;
+    max-width: 450px;
 }
 
 .footer-brand-compact p {
-    margin-top: 15px;
-    font-size: 14px;
-    opacity: 0.85;
-    line-height: 1.5;
+    margin-top: 1rem;
+    font-size: 0.9rem;
 }
 
-.footer-socials-compact {
-    display: flex;
-    align-items: center;
-}
-
-.social-icons-compact .whatsapp {
-    background-color: var(--whatsapp-green);
-    color: var(--pure-white);
-    padding: 12px 24px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 700;
+.social-btn-compact.whatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: background-color 0.3s;
+    background-color: #25d366; /* Official WhatsApp Green */
+    color: var(--white);
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
 }
 
-.social-icons-compact .whatsapp:hover {
-    background-color: var(--whatsapp-hover);
+.social-btn-compact.whatsapp:hover {
+    background-color: #1ebd58;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (MOBILE FIXES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header-flex {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .nav-menu ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header-cta {
+        display: none; /* Simplifies layout on tiny screens */
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .footer-flex-compact {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-brand-compact .logo {
+        justify-content: center;
+    }
 }
