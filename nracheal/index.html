@@ -376,4 +376,269 @@
 
         .contact-box {
             background-color: var(--white);
-            max-width:
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .contact-content {
+            padding: 3.5rem;
+            text-align: center;
+        }
+
+        .contact-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .contact-content p {
+            margin-bottom: 2rem;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================================================
+           9. COMPACT FOOTER
+           ========================================================================== */
+        .footer-compact {
+            background-color: var(--dark-color);
+            color: #c5b9b0;
+            padding: 4rem 0 2rem 0;
+        }
+
+        .footer-flex-compact {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #423730;
+            padding-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand-compact {
+            max-width: 450px;
+        }
+
+        .footer-brand-compact p {
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .social-btn-compact.whatsapp {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25d366;
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .social-btn-compact.whatsapp:hover {
+            background-color: #1ebd58;
+            transform: translateY(-2px);
+        }
+
+        .footer-copy {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8c7e74;
+        }
+
+        /* ==========================================================================
+           10. RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .grid-split {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .process-steps, .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-content h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1rem 0;
+            }
+            .nav-menu ul {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .header-cta { display: none; }
+            .hero-section { height: 70vh; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .process-steps, .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-content { padding: 2rem; }
+            .footer-flex-compact {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo">
+                <img src="logo.png" alt="Nats Juice Logo" class="logo-img">
+                <span class="logo-text">NATS<span>JUICE</span></span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#process">Our Process</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta">
+                <a href="#contact" class="btn-cta">Order Now</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Pure Nature In Every Single Sip.</h1>
+            <p>Fresh fruit selections and cold-pressed juices hydrating and energizing healthy lifestyles across Uganda.</p>
+            <a href="#products" class="btn-cta">Explore Our Range</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Our Story & Passion</h2>
+            <p class="section-subtitle">Sourcing directly from local Ugandan farms to give you the highest quality nutritional experiences.</p>
+            
+            <div class="grid-split">
+                <div class="about-img-container">
+                    <img src="about.jpg" alt="Fresh wholesome fruits and natural juices mixture">
+                </div>
+                <div class="about-text">
+                    <h3>Pure Farm To Bottle</h3>
+                    <p>At Nats Juice, we believe nature has already provided everything your body needs to thrive. Our journey began with a simple mission: to make pure, unaltered plant nutrition accessible to everyone across Uganda.</p>
+                    <p>We work closely with community farmers to harvest perfectly ripened fruits and vegetables, transforming them into delicious drinks without artificial additives, preservatives, or refined sugars.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <p class="section-subtitle">We use state-of-the-art cold-pressed methods to preserve pure enzymes and vibrant raw flavors.</p>
+            
+            <img src="process.jpg" alt="Nats Juice Cold-Pressed Process Overview Banner" class="process-banner">
+            
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h4>Ethical Sourcing</h4>
+                    <p>Handpicked selections straight from Uganda's richest soil orchards at peak maturity periods.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h4>Cold-Press Extraction</h4>
+                    <p>Pressed gently without disruptive heat elements to keep original vitamin and enzyme properties completely alive.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h4>Zero Added Nonsense</h4>
+                    <p>Bottled immediately without water dilution, chemical additives, or added sugar contents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">100% natural juices packed with vital active nutrients to power your day.</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-visual">🍊</div>
+                    <div class="product-info">
+                        <h4>Citrus Blast</h4>
+                        <p>A vibrant, immune-boosting blend of sweet locally harvested oranges and zesty tangerines.</p>
+                        <span class="product-price">Pure Refreshment</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-visual">🥬</div>
+                    <div class="product-info">
+                        <h4>Green Vitality</h4>
+                        <p>Crisp cucumber, nutrient-dense spinach, green apple, and a sharp touch of cleansing ginger root.</p>
+                        <span class="product-price">Deep Hydration</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-visual">🥕</div>
+                    <div class="product-info">
+                        <h4>Glow Root Blend</h4>
+                        <p>Earth-sweet carrots paired harmoniously with red beetroot extracts for high stamina and natural glow.</p>
+                        <span class="product-price">Daily Energy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-box">
+                <div class="contact-content">
+                    <h3>Get In Touch With Us</h3>
+                    <p>Ready to experience true refreshment? Order your fresh batch today directly through WhatsApp!</p>
+                    <a href="https://wa.me/256778732386" target="_blank" class="social-btn-compact whatsapp">
+                        📥 Click to Order via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <div class="footer-flex-compact">
+                <div class="footer-brand-compact">
+                    <div class="logo">
+                        <img src="logo.png" alt="Nats Juice Logo" class="logo-img">
+                        <span class="logo-text" style="color: #ffffff;">NATS<span>JUICE</span></span>
+                    </div>
+                    <p>Fresh fruit selections and cold-pressed juices hydrating and energizing healthy lifestyles across Uganda.</p>
+                </div>
+                <div class="footer-socials-compact">
+                    <a href="https://wa.me/256778732386" target="_blank" class="social-btn-compact whatsapp">
+                        WhatsApp Us
+                    </a>
+                </div>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 NATS JUICE. Pure Farm To Bottle. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
